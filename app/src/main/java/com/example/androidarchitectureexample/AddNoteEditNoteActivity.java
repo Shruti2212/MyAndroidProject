@@ -87,10 +87,7 @@ public class AddNoteEditNoteActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
 
-
         }
-
-
     }
 
     @Override
