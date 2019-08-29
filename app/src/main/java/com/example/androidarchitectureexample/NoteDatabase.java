@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Note.class},version = 2)
+@Database(entities = {Note.class}, version = 2)
 public abstract class NoteDatabase extends RoomDatabase {
     private static NoteDatabase instance;
 
@@ -24,7 +24,8 @@ public abstract class NoteDatabase extends RoomDatabase {
         }
         return instance;
     }
-    private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback(){
+
+    private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
@@ -33,22 +34,22 @@ public abstract class NoteDatabase extends RoomDatabase {
 
 
     };
-     private static class populateAssyncTask extends AsyncTask<Void,Void,Void>
-     {
-         private NoteDao noteDao;
 
-         public populateAssyncTask(NoteDatabase db) {
-             this.noteDao = db.notedao();
-         }
+    private static class populateAssyncTask extends AsyncTask<Void, Void, Void> {
+        private NoteDao noteDao;
 
-         @Override
-         protected Void doInBackground(Void... voids) {
-             noteDao.insert(new Note("Title 1","Description 1",1));
-             noteDao.insert(new Note("Title 2","Description 2",2));
-             noteDao.insert(new Note("Title 3","Description 3",4));
-             noteDao.insert(new Note("Title 3","Description 3",3));
-             return null;
-         }
-     }
+        public populateAssyncTask(NoteDatabase db) {
+            this.noteDao = db.notedao();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            noteDao.insert(new Note("Title 1", "Description 1", 1));
+            noteDao.insert(new Note("Title 2", "Description 2", 2));
+            noteDao.insert(new Note("Title 3", "Description 3", 4));
+            noteDao.insert(new Note("Title 3", "Description 3", 3));
+            return null;
+        }
+    }
 
 }

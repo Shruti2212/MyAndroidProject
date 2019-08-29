@@ -12,7 +12,7 @@ import org.w3c.dom.Node;
 import java.util.List;
 
 @Dao
-public interface NoteDao  {
+public interface NoteDao {
     @Insert
     void insert(Note note);
 
@@ -26,5 +26,5 @@ public interface NoteDao  {
     void deleteAllNotes();
 
     @Query("Select * from note_table Order by priority ASC")
-       LiveData<List<Note>> getAllNotes();
+    LiveData<List<Note>> getAllNotes();
 }
